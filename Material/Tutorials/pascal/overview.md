@@ -41,8 +41,8 @@ end.
 
 > `var` **\<name\>** `:` **\<type\>**
 
-* Must be declared in the definitions section
-* Assign values using walrus operator (:=)
+* must be declared in the definitions section
+* assign values using walrus operator (:=)
 
 <!--vert-->
 
@@ -111,11 +111,11 @@ pred(Blue) = Green
 
 ```pascal
 type Letter = 'A' .. 'Z';
-     Index = 3 .. 8;
+     Idx = 3 .. 8;
      BasicColor = Red .. Blue;
 ```
 
-* Important note - boundaries are not enforced
+* important note - boundaries are not enforced
 
 ---
 
@@ -134,7 +134,7 @@ sets have many many functions to work with - union, intersection, etc.
 
 ### union
 
-Consider these two sets:
+consider these two sets:
 
 ```pascal
 var s1, s2 : Rainbow;
@@ -198,7 +198,7 @@ begin
 end.
 ```
 
-checks set membership of an element in a set
+checks membership of an element in a set
 
 ```pascal
 Red in s1; { true }
@@ -313,7 +313,7 @@ for i := 'a' to 'z' do
      WriteLn(i)
 ```
 
-A way to run over all elements in a set:
+iterating over all elements in a set:
 
 ```pascal
 WriteLn('Color set S contains: ');
@@ -404,7 +404,7 @@ pens[Red].width := 2;
 
 ## strings
 strings are treated as arrays of characters.
-* Access a character using `[]`, **using 1-based indexing**
+* access a character using `[]`, **using 1-based indexing**
 * `Length` is used to get a strings length
 
 
