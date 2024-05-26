@@ -8,9 +8,8 @@
 
 * SML - Standard Meta Language
 * *General-purpose*, *modular*, *statically typed*, *functional* programming language.
-* Proposed in 1983, first stable implementation in 1997.
-* A (relatively) modern dialect of ML, which was invented in 1973.
-
+* Proposed in 1983, first stable implementation in 1997
+* A (relatively) modern dialect of ML, which was invented in 1973
 * In 1970s, Robin Milner and group working at Edinburgh University on "LCF" (a theorem proover)
 * ML invented as an embedded scripting language of LCF
 * Many ad-hoc independent implementations, many new ideas
@@ -21,8 +20,8 @@
 ### Why SML?
 
 * Exemplar of functional programming:
-  * Forget about variables (kind of).
-  * Data is immutable (again, kind of).
+  * Forget about variables (kind of)
+  * Data is immutable (again, kind of)
   * Functions are first-class values.
   * Higher lever functions
 
@@ -93,6 +92,7 @@ We use the `val` keyword to name a new value:
 
 ```sml
 val seconds : int = 60;
+```
 
 <!--vert-->
 
@@ -100,7 +100,6 @@ Using named values in expressions
 
 ```sml
 val minutes = 60;
-
 val hours = 24;
 
 seconds * minutes * hours;
@@ -119,7 +118,6 @@ The identifier `it` refers to the last response:
 seconds * minutes * hours;
 
 it div 24;
-
 val secs_in_hour = it;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
@@ -130,8 +128,8 @@ val secs_in_hour = it;
 
 There are two kinds of identifiers in SML:
 
-* Alphabetical identifiers, as found in most languages.
-* Special identifiers - mainly for defining new operators.
+* Alphabetical identifiers, as found in most languages
+* Special identifiers - mainly for defining new operators
 
 <!--vert-->
 
@@ -162,14 +160,15 @@ Identifier congestion?
   * Names of operators: `and`, `if`, `then`, `else`, `orelse`, ...
   * Punctuations: `fun`, `let`, `local`, `of`, ...
   * Many more
+* Examples:
 
-```sml
-x
-x'
-uB40
-hamlet_prince_of_denmark
-h''3_H
-```
+    ```sml
+    x
+    x'
+    uB40
+    hamlet_prince_of_denmark
+    h''3_H
+    ```
 
 <!--vert-->
 
@@ -332,7 +331,7 @@ Characters (values of type `char`) are distinguished from strings of length 1 by
 
 <!--vert-->
 
-### Char operration
+### Char operations
 
 Conversion between strings and chars
 
@@ -381,14 +380,14 @@ The names `true` and `false` are not keywords; they are predefined identifiers!
 
 * The components can be of any type, including tuples
 
-```sml
-val a = (1.5, 6.8);
+    ```sml
+    val a = (1.5, 6.8);
 
-(1, 1.5);
+    (1, 1.5);
 
-("str",1,true,(#"0",0.1));
-```
-<!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
+    ("str", 1, true, (#"0", 0.1));
+    ```
+    <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 ---
 
@@ -397,7 +396,7 @@ val a = (1.5, 6.8);
 * Records have components (fields) identified by name
 
     ```sml
-    val me = { name="Ofir", age=30 };
+    val me = {name="Ofir", age=30};
     ```
     <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -457,9 +456,9 @@ if x < y then x*x else 0;
 
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
-* *if-else* is not a control structure, but an expression! (a bit like trinary operators in C).
-* The two possible outcomes must be of the same type.
-* *else* is mandatory.
+* *if-else* is not a control structure, but an expression! (a bit like trinary operators in C)
+* The two possible outcomes must be of the same type
+* *else* is mandatory
 ---
 
 ### Mapping - functions
@@ -470,7 +469,6 @@ fun sq (x: int) = x*x;
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 * `fun` keyword starts the function declaration
->>>>>>> refs/rewritten/merge
 * `sq` is the function name
 * `x:int` is the formal parameter with type constraint
 * `x*x` is the body and it is an **expression**
@@ -512,7 +510,7 @@ fun sq (x: int) = x*x;
 * Parentheses are also optional in function definitions
 
     ```sml
-    fun sq x:int = x*x;
+    fun sq x: int = x*x;
     ```
     <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -524,44 +522,44 @@ fun sq (x: int) = x*x;
 * Any type can be passed/returned!!!
 * Tuples are used to pass/return several values
 
-```sml
-val a = (3.0, 4.0);
+    ```sml
+    val a = (3.0, 4.0);
 
-fun lengthvec (x:real, y:real) = Math.sqrt (x*x + y*y);
+    fun lengthvec (x: real, y: real) = Math.sqrt (x*x + y*y);
 
-lengthvec a;
+    lengthvec a;
 
-lengthvec (5.0, 12.0);
-```
-<!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
+    lengthvec (5.0, 12.0);
+    ```
+    <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 ---
 
 ### Functions as Values
 
-Anonymous functions with `fn` notation
+* Anonymous functions with `fn` notation
 
-```sml
-fn x:int => x*x;
+    ```sml
+    fn x: int => x*x;
 
-it 3;
-```
-<!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
+    it 3;
+    ```
+    <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 
-The following declarations are identical
+* The following declarations are identical
 
-```sml
-fun sq x:int = x*x;
-val sq = fn x:int => x*x;
-```
-<!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
+    ```sml
+    fun sq x: int = x*x;
+    val sq = fn x: int => x*x;
+    ```
+    <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 ---
 
 ### Returning a Function as Value
 
-* Functions can also be __returned__ from other functions
+* Functions can also be **returned** from other functions
 
     ```sml
     fun inttwice (f: int->int) =
@@ -569,7 +567,7 @@ val sq = fn x:int => x*x;
     ```
     <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
-* The arrow is right associative so the type of `inttwice` is equivalent to:
+* The arrow is **right associative** so the type of `inttwice` is equivalent to:
 
     ```sml
     val inttwice = fn : (int -> int) -> (int -> int)
@@ -599,10 +597,10 @@ fun facti (n, p) =
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
-* Literals `0` and `1` have type `int`.</span>
-* Therefore `n=0` and `n-1` involve integers so `n` has type `int`</span>
-* `n*p` must be integer multiplication, so `p` is of type `int`</span>
-* Therefore `facti` returns type `int`</span>
+* Literals `0` and `1` have type `int`
+* Therefore `n=0` and `n-1` involve integers so `n` has type `int`
+* `n*p` must be integer multiplication, so `p` is of type `int`
+* Therefore `facti` returns type `int`
 
 ---
 
@@ -615,7 +613,7 @@ fun facti (n, p) =
 ---
 
 ###  Type Inference Exercise
-what will be printed for the following definitions of `min`?
+What will be printed for the following definitions of `min`?
 
 <!--vert-->
 
@@ -627,39 +625,39 @@ fun min (x, y) = if x < y then x else y;
 <!--vert-->
 
 ```sml
-fun min (x:real, y) = if x < y then x else y;
+fun min (x: real, y) = if x < y then x else y;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 <!--vert-->
 
 ```sml
-fun min (x:string, y) = if x < y then x else y;
+fun min (x: string, y) = if x < y then x else y;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 <!--vert-->
 
 ```sml
-fun min (x,y) : real = if x < y then x else y;
+fun min (x, y) : real = if x < y then x else y;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 <!--vert-->
 
 ```sml
-fun min (x,y) = if x < y then x:real else y;
+fun min (x, y) = if x < y then x: real else y;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 <!--vert-->
-write a function `foo` such that its type is:
+Write a function `foo` such that its type is:
 
 ```sml
-val foo = fn : int * real -> real
+val foo = fn: int * real -> real
 ```
 
-without using type annotations
+Without using type annotations
 
 ```sml
 ...
@@ -684,17 +682,17 @@ NOTE: Pascal has type punning so its not as strongly typed as ML
 
 ### Polymorphic Function Definitions
 
-* In case type inference leaves some types completely unconstrained then the definition is polymorphic.
+* In case type inference leaves some types completely unconstrained then the definition is polymorphic
 * A polymorphic type contains a type variable, e.g. 'a, 'b
 
-```sml
-fun pairself x = (x, x);
+    ```sml
+    fun pairself x = (x, x);
 
-pairself 4.0;
+    pairself 4.0;
 
-fun pair (x,y) = (y, x);
-```
-<!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
+    fun pair (x,y) = (y, x);
+    ```
+    <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 ---
 
