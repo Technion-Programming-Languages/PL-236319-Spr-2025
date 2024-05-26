@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "",
   "scripts": {
-    "start": "gulp serve --ip=${npm_config_ip:-localhost} --port=${npm_config_port:-16788} --portjupyter=${npm_config_portjupyter:-16789} 2> npm-start-err.log > npm-start.log",
+    "start": "gulp serve --ip=${npm_config_ip:-localhost} --external_ip=${npm_config_external_ip:-localhost} --port=${npm_config_port:-16788} --portjupyter=${npm_config_portjupyter:-16789} 2> npm-start-err.log > npm-start.log",
     "jupyter-server": "jupyter server --allow-root --ServerApp.ip=${npm_config_ip:-localhost} --ServerApp.token='' --ServerApp.password='' --ServerApp.allow_origin='*' --ServerApp.disable_check_xsrf=\"True\" --no-browser --ServerApp.port=${npm_config_portjupyter:-16789} 2> jupyter-server-err.log > jupyter-server.log"
   },
   "engines": {

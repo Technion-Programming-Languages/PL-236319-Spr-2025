@@ -22,7 +22,7 @@ function generate_slides(dir, template) {
         files.forEach((file, _index) => {
             if (file.endsWith(".md")) {
                 const name = file.substring(0, file.length - 3);
-                const html = template({ tutorial_name: name, sub: dir, host: argv.ip || "localhost", port: argv.portjupyter, });
+                const html = template({ tutorial_name: name, sub: dir, host: argv.ip || "localhost", external_ip: argv.external_ip, port: argv.portjupyter, });
                 fs.mkdir(`${OUTPUT_DIR}/${dir}`, {recursive: true}, (err) => {
                     if (err) {
                         console.error(err);
