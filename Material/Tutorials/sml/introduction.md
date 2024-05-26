@@ -10,6 +10,9 @@
 * *General-purpose*, *modular*, *statically typed*, *functional* programming language.
 * Proposed in 1983, first stable implementation in 1997
 * A (relatively) modern dialect of ML, which was invented in 1973
+
+<!--vert-->
+
 * In 1970s, Robin Milner and group working at Edinburgh University on "LCF" (a theorem proover)
 * ML invented as an embedded scripting language of LCF
 * Many ad-hoc independent implementations, many new ideas
@@ -59,6 +62,8 @@ Two main features emphasized by the language creator:
   * Flexibility of typeless
   * Safety of typed
 
+<!--vert-->
+
 ## Executing SML code
 We will mostly execute in REPL mode.
 * First prompt (-) and secondary prompt (=)
@@ -93,6 +98,7 @@ We use the `val` keyword to name a new value:
 ```sml
 val seconds : int = 60;
 ```
+<!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 <!--vert-->
 
@@ -160,15 +166,17 @@ Identifier congestion?
   * Names of operators: `and`, `if`, `then`, `else`, `orelse`, ...
   * Punctuations: `fun`, `let`, `local`, `of`, ...
   * Many more
-* Examples:
+<!--vert-->
 
-    ```sml
-    x
-    x'
-    uB40
-    hamlet_prince_of_denmark
-    h''3_H
-    ```
+Some examples:
+
+```sml
+x
+x'
+uB40
+hamlet_prince_of_denmark
+h''3_H
+```
 
 <!--vert-->
 
@@ -248,15 +256,14 @@ Conventional precedence (parenthesis can be dropped without change of meaning)
 * Decimal point
   * `0.01`
   * `2.718281828`
-  * "e" notation
+* "e" notation
   * `7E~5`
   * `~1.2E12`
   * `~123.4E~2` is the same as `~1.234`
 
 <!--vert-->
 
-Infix operators: `+` `-` `*` `/`
-
+#### int infix operators
 `+` `-` `*` `/`
 
  * Note that `+`, `-`, `*` are overloaded
@@ -572,6 +579,9 @@ fun sq (x: int) = x*x;
     ```sml
     val inttwice = fn : (int -> int) -> (int -> int)
     ```
+    <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
+
+<!--vert-->
 
 ### Returning a Function as Value
 
@@ -593,7 +603,6 @@ ML deduces the types in expressions
 ```sml
 fun facti (n, p) =
     if n=0 then p else facti (n-1, n*p);
-(*val facti = fn : int * int -> int*)
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -755,7 +764,7 @@ fn x => twice ident (x);
 * Functional - stateless. using expressions recursively to calculate the result
 * Example: Euclid's algorithm for the Greatest Common Divisor (GCD) of two natural numbers:
 
-$$gcd (m,n) = \begin{cases}n,m = 0&\\gcd (n mod m,m), m>0\end{cases}$$
+$$gcd (m,n) = \begin{cases}n,m = 0&\\gcd (n  mod  m,m), m>0\end{cases}$$
 
 <!--vert-->
 
@@ -775,5 +784,6 @@ A functional program in Standard ML:
 ```sml
 fun gcd (m,n) = if m=0 then n else gcd (n mod m, m);
 ```
+<!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 Which one is more efficient? 🧐
