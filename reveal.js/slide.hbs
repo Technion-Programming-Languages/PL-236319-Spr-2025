@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>{{this.tutorial_name}}</title>
+
+		<script src="../../node_modules/reveal.js/dist/reveal.js"></script>
+		<script src="../../node_modules/reveal.js/plugin/notes/notes.js"></script>
+		<script src="../../node_modules/reveal.js/plugin/markdown/markdown.js"></script>
+		<script src="../../node_modules/reveal.js/plugin/highlight/highlight.js"></script>
+		<script src="../../node_modules/reveal.js/plugin/math/math.js"></script>
+		<script src="../../node_modules/thebe/lib/index.js"></script>
+
+		<link rel="stylesheet" href="../../node_modules/reveal.js/dist/reset.css">
+		<link rel="stylesheet" href="../../node_modules/reveal.js/dist/reveal.css">
+		<link rel="stylesheet" href="../../node_modules/reveal.js/dist/theme/white.css" id="theme">
+		<link rel="stylesheet" href="../../highlight.css" id="highlight-theme">
+		<link rel="stylesheet" href="../../slide.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown="../../material/Tutorials/{{this.sub}}/{{this.tutorial_name}}.md" data-separator="\r?\n---\r?\n" data-separator-vertical="\r?\n&lt;!--vert--&gt;\r?\n" data-separator-notes="^NOTE:"></section>
+			</div>
+		</div>
+
+		<script src="../../prolog_codemirror.js"></script>
+		<script src="../../lisp_codemirror.js"></script>
+		<script src="../../slide.js"></script>
+		<script>
+			Reveal.initialize(REVEAL_PARAMS).then(() => thebe_init_all("{{this.sub}}", "{{this.host}}", "{{this.port}}"));
+		</script>
+	</body>
+</html>

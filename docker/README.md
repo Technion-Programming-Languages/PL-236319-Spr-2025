@@ -1,41 +1,37 @@
-# dockerized slides
+# Dockerized Slides
 
-## install docker
+## Install Docker
 
-### windows
+### Windows
 
-follow the instructions [here](https://docs.docker.com/desktop/windows/install/)
+Follow the instructions [here](https://docs.docker.com/desktop/windows/install/)
 
-you will install both the docker engine and an easy to use gui for it (Docker Desktop)
+You will install both the docker engine and an easy to use gui for it (Docker Desktop)
 
-### ubuntu
+### Ubuntu
 
-follow the instructions [here](https://docs.docker.com/engine/install/ubuntu/)
+Follow the instructions [here](https://docs.docker.com/engine/install/ubuntu/)
 
-## usage
+## Usage
 
-### start the container
+### Start the container
 
-the following command pulls the image and runs it interactively
+The following command pulls the image and runs it interactively.
 
-fire up powershell(windows) or bash(linux) and execute it (you may need to use `sudo` on linux)
+Fire up powershell (windows) or bash (linux) and execute it (you may need to use `sudo` on linux)
 
 ```bash
 docker run --pull="always" -p 127.0.0.1:16788:16788 -p 127.0.0.1:16789:16789 -it twyair/safot-revealjs:latest bash
 ```
 
-### in the container
+### In the container
 
-run:
+Run:
 
 ```bash
 source start.sh
 ```
 
-### open slides
+### Open slides
 
 go to <http://127.0.0.1:16788/slides>
-
-## TODO
-
-- [ ] install the prolog jupyter kernel to `base/`

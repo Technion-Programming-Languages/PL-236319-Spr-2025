@@ -1,0 +1,20 @@
+{
+  "name": "pl-slides",
+  "version": "0.1.0",
+  "description": "",
+  "scripts": {
+    "start": "gulp serve --ip=${npm_config_ip:-localhost} --port=${npm_config_port:-16788} --portjupyter=${npm_config_portjupyter:-16789} 2> npm-start-err.log > npm-start.log",
+    "jupyter-server": "jupyter server --allow-root --ServerApp.ip=${npm_config_ip:-localhost} --ServerApp.token='' --ServerApp.password='' --ServerApp.allow_origin='*' --ServerApp.disable_check_xsrf=\"True\" --no-browser --ServerApp.port=${npm_config_portjupyter:-16789} 2> jupyter-server-err.log > jupyter-server.log"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-connect": "^5.7.0",
+    "handlebars": "^4.7.7",
+    "reveal.js": "^4.0.2",
+    "thebe": "^0.8.0",
+    "yargs": "^17.2.1"
+  }
+}
