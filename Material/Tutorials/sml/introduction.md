@@ -263,7 +263,7 @@ Conventional precedence (parenthesis can be dropped without change of meaning)
 
 <!--vert-->
 
-#### int infix operators
+#### real infix operators
 `+` `-` `*` `/`
 
  * Note that `+`, `-`, `*` are overloaded
