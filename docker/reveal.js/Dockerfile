@@ -41,6 +41,8 @@ RUN git clone https://github.com/OpenUniversity/PL-236319-Spr-2024.git repositor
 RUN ln -s repository/Material material
 RUN ln -s repository/Material/Tutorials/imgs imgs
 
+RUN chmod +x /root/source/start.sh 
+
 EXPOSE 16788 16789
 
 ENTRYPOINT [ "/root/source/start.sh" ]
