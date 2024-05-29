@@ -6,7 +6,7 @@
 
 * designed: 1968 by Niklaus Wirth
 * published: 1970
-* imperative, structural, procedural
+* imperative, structured, procedural
 * static and strong typing
 * designed to be simple
 * we will use FreePascal
