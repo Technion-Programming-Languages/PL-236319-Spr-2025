@@ -12,6 +12,7 @@ RUN apk add --no-cache binutils
 RUN apk add --no-cache ncurses-dev
 RUN apk add --no-cache ctags
 RUN apk add --no-cache python3 py3-pip
+RUN apk add --no-cache git
 RUN pip3 install  --break-system-packages --no-cache --upgrade Pygments
 
 # # install GNU global
