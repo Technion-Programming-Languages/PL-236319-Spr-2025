@@ -1,0 +1,31 @@
+ADD
+REG
+1001
+Introduction to Programming
+3
+ADD
+LAB
+1002
+Physics Lab
+Dr. Smith
+Room 101
+ADD
+SEM
+1003
+Advanced Mathematics
+14:00
+16:00
+PRINT
+1001
+PRINT
+1002
+PRINT
+1003
+ADD
+REG
+1001
+Introduction to Pascal
+4
+PRINT
+1001
+END
