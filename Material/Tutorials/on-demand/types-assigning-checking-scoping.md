@@ -55,7 +55,7 @@ There also isn't a universal definition, and languages may fall somewhere in bet
 ---
 
 ## 	Weak Typing with Static Typing
-- Example Languages: C
+- Example Languages: C, Common Lisp
 - Effects: The language allows more implicit type conversions at compile time, which can potentially lead to less predictable behavior and subtle bugs. However, it provides some level of type checking during compilation that can catch some errors early.
 
     ```c
