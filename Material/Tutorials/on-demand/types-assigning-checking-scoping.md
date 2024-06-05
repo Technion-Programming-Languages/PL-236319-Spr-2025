@@ -87,6 +87,13 @@ There also isn't a universal definition, and languages may fall somewhere in bet
 ---
 
 ## 	Weak Typing with Dynamic Typing
+
+![alt text](https://imageproxyb.ifunny.co/crop:x-20,resize:640x,quality:90x75/images/ad766d5f653ec01752126234c6f9c4ce8b7404f681a0958fd10f24b0cac9f212_1.jpg)
+
+---
+
+## 	Weak Typing with Dynamic Typing
+
 - Example Languages: Pure Lisp, Prolog, JavaScript, PHP
 - Effects: Maximum flexibility and ease of use, allowing rapid development and prototyping. However, this can also lead to more frequent runtime errors and less predictable behavior, as incorrect type usage might only become evident during execution.
 
