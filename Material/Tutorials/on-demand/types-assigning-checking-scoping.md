@@ -14,6 +14,10 @@
 - **Weak Typing**: Allows operations between different types without explicit conversion. For example, in JavaScript, you can add a string to a number without any issues
 - **Strong Typing**: Requires explicit conversion between different types. For example, in Python, you cannot add a string to a number without converting one of them to the other type
 
+---
+
+## Strong & Weak Typing
+
 These terms are often confused with Static and Dynamic Typing, but they are different concepts.
 There also isn't a universal definition, and languages may fall somewhere in between these two extremes.
 
@@ -34,6 +38,10 @@ There also isn't a universal definition, and languages may fall somewhere in bet
 - Example Languages: ML, Pascal, Java
 - Effects: Provides a high level of type safety, catching errors at compile time. This can lead to more robust and maintainable code but requires more upfront definition and less flexibility in terms of type manipulation at runtime.
 
+---
+
+## Strong Typing with Static Typing
+
     ```sml
     fun add (x : int, y : int) : int = x + y
 
@@ -46,6 +54,10 @@ There also isn't a universal definition, and languages may fall somewhere in bet
 - Example Languages: Python, Ruby
 - Effects: Errors related to types are still caught, but they are typically found at runtime rather than compile time. This allows more flexibility in how functions and data structures are used but can lead to runtime exceptions if type issues are not properly managed.
 
+---
+
+## Strong Typing with Dynamic Typing
+
     ```python
     def add_numbers(a, b):
         return a + b
@@ -57,6 +69,10 @@ There also isn't a universal definition, and languages may fall somewhere in bet
 ## 	Weak Typing with Static Typing
 - Example Languages: C, Common Lisp
 - Effects: The language allows more implicit type conversions at compile time, which can potentially lead to less predictable behavior and subtle bugs. However, it provides some level of type checking during compilation that can catch some errors early.
+
+---
+
+## 	Weak Typing with Static Typing
 
     ```c
     #include <stdio.h>
@@ -74,6 +90,10 @@ There also isn't a universal definition, and languages may fall somewhere in bet
 - Example Languages: Pure Lisp, Prolog, JavaScript, PHP
 - Effects: Maximum flexibility and ease of use, allowing rapid development and prototyping. However, this can also lead to more frequent runtime errors and less predictable behavior, as incorrect type usage might only become evident during execution.
 
+---
+
+## 	Weak Typing with Dynamic Typing
+
     ```javascript
     function add(a, b) {
         return a + b;
@@ -89,5 +109,9 @@ There also isn't a universal definition, and languages may fall somewhere in bet
 
 - **Compiled Languages**: The source code is translated into machine code before execution. This typically results in faster execution but requires a compilation step before running the program
 - **Interpreted Languages**: The source code is executed line by line, typically by an interpreter. This allows for more dynamic behavior but can be slower than compiled code
+
+---
+
+## Bonus: Compiled vs. Interpreted
 
 These concepts are distinct from typing methodologies, focusing instead on execution mechanisms.
