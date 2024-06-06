@@ -32,14 +32,14 @@ The infix declaration can come __before__ the function definition:
 
 ```sml
 infix d;
-fun (x d y) = Math.sqrt(x*x + y*y);
+fun (x d y) = Math.sqrt (x*x + y*y);
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 To treat an operator as a prefix function use the `op` keyword:
 
 ```sml
-op d(1.0,3.0);
+op d (1.0,3.0);
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
