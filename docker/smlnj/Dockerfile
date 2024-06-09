@@ -1,9 +1,9 @@
 FROM ubuntu:20.04
 
-ENV SML_VERSION=110.99.2
+ENV SML_VERSION=110.99.5
 
 RUN apt update \
-	&& apt install -y rlwrap wget build-essential \
+	&& apt install -y rlwrap wget build-essential git \
 	&& apt clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -13,8 +13,10 @@ RUN wget http://smlnj.cs.uchicago.edu/dist/working/${SML_VERSION}/config.tgz \
 	&& tar -xzf config.tgz \
 	&& rm config.tgz \
 	&& config/install.sh \
-    && cp bin/sml /usr/bin
+    && cp bin/sml /usr/bin/smlnj
 
-RUN echo alias rsml="'rlwrap sml'" >> /root/.bashrc
+RUN ln -s /usr/share/smlnj/bin/.heap/sml.amd64-linux /usr/share/smlnj/bin/.heap/smlnj
+COPY sml /bin/sml
+RUN chmod +x /bin/sml
 
 WORKDIR /root/source
