@@ -1,0 +1,7 @@
+print "===TEST START===\n";
+val match1 = isMatch "*a*b*" "xaybz";  
+val match2 = isMatch "ab*c" "abcd";    
+val match3 = isMatch "a*b*c" "aabbc";  
+val match4 = isMatch "abc*" "abcde";   
+val match5 = isMatch "a*c" "abbbbbbc"; 
+val match6 = isMatch "a*b*c*d*" "abcd";
