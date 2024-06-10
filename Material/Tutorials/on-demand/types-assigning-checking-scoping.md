@@ -42,12 +42,12 @@ There also isn't a universal definition, and languages may fall somewhere in bet
 
 ## Strong Typing with Static Typing
 
-    ```sml
-    fun add (x : int, y : int) : int = x + y
+```sml
+fun add (x : int, y : int) : int = x + y
 
-    val result = add(5, 3) (* This will compile because the types are correct *)
-    val error = add(5, "hello") (* This will cause a compile-time error due to type mismatch *)
-    ```
+val result = add(5, 3) (* This will compile because the types are correct *)
+val error = add(5, "hello") (* This will cause a compile-time error due to type mismatch *)
+```
 ---
 
 ## Strong Typing with Dynamic Typing
@@ -58,12 +58,12 @@ There also isn't a universal definition, and languages may fall somewhere in bet
 
 ## Strong Typing with Dynamic Typing
 
-    ```python
-    def add_numbers(a, b):
-        return a + b
+```python
+def add_numbers(a, b):
+    return a + b
 
-    result = add_numbers(10, "5")  # This will raise a TypeError at runtime
-    ```
+result = add_numbers(10, "5")  # This will raise a TypeError at runtime
+```
 ---
 
 ## 	Weak Typing with Static Typing
@@ -74,16 +74,16 @@ There also isn't a universal definition, and languages may fall somewhere in bet
 
 ## 	Weak Typing with Static Typing
 
-    ```c
-    #include <stdio.h>
+```c
+#include <stdio.h>
 
-    int main() {
-        int a = 10;
-        float b = 5.5;
-        printf("%f\n", a + b);  // This will compile and run
-        return 0;
-    }
-    ```
+int main() {
+    int a = 10;
+    float b = 5.5;
+    printf("%f\n", a + b);  // This will compile and run
+    return 0;
+}
+```
 ---
 
 ## 	Weak Typing with Dynamic Typing
@@ -101,14 +101,14 @@ There also isn't a universal definition, and languages may fall somewhere in bet
 
 ## 	Weak Typing with Dynamic Typing
 
-    ```javascript
-    function add(a, b) {
-        return a + b;
-    }
+```javascript
+function add(a, b) {
+    return a + b;
+}
 
-    let result = add(10, "5");  // This will concatenate the strings
-    console.log(result); // "105"
-    ```
+let result = add(10, "5");  // This will concatenate the strings
+console.log(result); // "105"
+```
 
 ---
 
