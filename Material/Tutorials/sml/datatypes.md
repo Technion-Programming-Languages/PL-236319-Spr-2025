@@ -85,7 +85,7 @@ value bishop;
 If we use builtin types only, we may insert unwanted errors easily:
 
 ```sml
-fun a m f = f/m;
+fun a m f = f / m;
 
 val (body_mass, engine_force) = (0.0122, 50.0);
 
@@ -102,7 +102,7 @@ Type aliasing doesn't help
 ```sml
 type mass = real and force = real and acceleration = real;
 
-fun a (m:mass) (f:force) : acceleration = f/m;
+fun a (m:mass) (f:force) : acceleration = f / m;
 
 a engine_force body_mass; (* still oops *)
 ```
@@ -193,7 +193,7 @@ datatype shape =
     point
   | Line of real
   | Circle of real
-  | Rectangle of real*real;
+  | Rectangle of real * real;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -212,7 +212,7 @@ In SML we also get type safety and pattern matching out of the box:
 
 ```sml
 fun area (point | Line _) = 0.0
-  | area (Circle r) = Math.pi*r*r
+  | area (Circle r) = Math.pi * r * r
   | area (Rectangle (w, h)) = w * h;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
@@ -275,7 +275,7 @@ infixr ::;
 datatype 'a option = NONE | SOME of 'a;
 
 fun head []     = NONE
-  | head (x::_) = SOME x;
+  | head (x :: _) = SOME x;
 
 head [1, 2, 3];
 

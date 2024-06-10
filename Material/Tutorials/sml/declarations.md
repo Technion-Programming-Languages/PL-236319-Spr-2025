@@ -150,7 +150,7 @@ val sq = fn x => x * x;
 What about recursive functions?
 
 ```sml
-val f = fn (n) => if n=0 then 1 else n * f (n-1);
+val f = fn n => if n = 0 then 1 else n * f (n - 1);
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -161,7 +161,7 @@ val f = fn (n) => if n=0 then 1 else n * f (n-1);
 In order to do so, we may use `val rec`:
 
 ```sml
-val rec f = fn (n) => if n=0 then 1 else n * f(n-1);
+val rec f = fn n => if n = 0 then 1 else n * f (n - 1);
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -194,7 +194,7 @@ Patterns can be used to simplify function definitions
 
 ```sml
 fun factorial 0 = 1
-  | factorial n = n * factorial(n-1);
+  | factorial n = n * factorial (n - 1);
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -218,29 +218,29 @@ Patterns can consist of:
 What will be printed?
 
 ```sml
-fun foo (x,1) = x
-  | foo (1,_) = 0
+fun foo (x, 1) = x
+  | foo (1, _) = 0
   | foo _ = ~1;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 ```sml
-foo(3,1);
+foo (3, 1);
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 ```sml
-foo(1,3);
+foo (1, 3);
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 ```sml
-foo(2,2);
+foo (2, 2);
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 ```sml
-foo(1,1);
+foo (1, 1);
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -271,12 +271,12 @@ case 7 of
 You can give a new name to an existing type.
 
 ```sml
-type vec = real*real;
+type vec = real * real;
 
 infix ++;
-fun (x1,y1) ++ (x2,y2) : vec = (x1+x2,y1+y2);
+fun (x1, y1) ++ (x2, y2) : vec = (x1 + x2, y1 + y2);
 
-(3.6,0.9) ++ (0.1,0.2) ++ (20.0,30.0);
+(3.6, 0.9) ++ (0.1, 0.2) ++ (20.0, 30.0);
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 > Note: the new name is only an alias
@@ -290,11 +290,11 @@ let D in E end
 ```
 
 ```sml
-fun gcd (n, m) = if m=0 then n else gcd (n mod m, m);
+fun gcd (n, m) = if m = 0 then n else gcd (n mod m, m);
 
-fun fraction(n,d)=
+fun fraction (n, d)=
   let 
-    val com = gcd(n,d)
+    val com = gcd (n, d)
   in
     (n div com, d div com)
   end;
@@ -324,7 +324,7 @@ end;
 `let` can be simulated using anonymous functions
 
 ```sml
-fun fraction (n,d) = (fn c => (n div c, d div c))(gcd(n,d));
+fun fraction (n, d) = (fn c => (n div c, d div c)) (gcd (n, d));
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -335,12 +335,12 @@ fun fraction (n,d) = (fn c => (n div c, d div c))(gcd(n,d));
 ```sml
 fun sqroot a =
   let  
-    val acc=1.0e~10
+    val acc = 1.0e~10
     fun findroot x =
       let 
-        val nextx = (a/x + x)/2.0
+        val nextx = (a / x + x) / 2.0
       in 
-        if abs (x - nextx) < acc*x
+        if abs (x - nextx) < acc * x
         then nextx
         else findroot nextx
       end
@@ -364,9 +364,9 @@ local D1 in D2 end
 local
   fun itfib (n, prev, curr): int =
     if n = 1 then curr
-    else itfib (n-1, curr, prev + curr)
+    else itfib (n - 1, curr, prev + curr)
 in
-  fun fib n = itfib(n, 0, 1)
+  fun fib n = itfib (n, 0, 1)
 end;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
@@ -381,9 +381,9 @@ end;
 fun fib n = let
   fun itfib (n, prev, curr): int =
     if n = 1 then curr
-    else itfib (n-1, curr, prev + curr)
+    else itfib (n - 1, curr, prev + curr)
 in
-  itfib(n, 0, 1)
+  itfib (n, 0, 1)
 end;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
@@ -392,9 +392,9 @@ end;
 local
   fun itfib (n, prev, curr): int =
     if n = 1 then curr
-    else itfib (n-1, curr, prev + curr)
+    else itfib (n - 1, curr, prev + curr)
 in
-  fun fib n = itfib(n, 0, 1)
+  fun fib n = itfib (n, 0, 1)
 end;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
@@ -469,13 +469,13 @@ val x = y and y = x;
 $$\frac{\pi}{4}=\sum_{k=0}^\infty \frac{1}{4k+1} - \frac{1}{4k+3} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \frac{1}{9} - \cdots$$
 
 ```sml
-fun pos d = neg (d-2.0) + 1.0/d
-and neg d = if d > 0.0 then pos(d-2.0) - 1.0/d
+fun pos d = neg (d - 2.0) + 1.0 / d
+and neg d = if d > 0.0 then pos (d - 2.0) - 1.0 / d
                        else 0.0;
 
 fun sum (d, one) =
     if d > 0.0
-    then sum(d-2.0,~one) + one/d
+    then sum(d - 2.0, ~one) + one / d
     else 0.0;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
