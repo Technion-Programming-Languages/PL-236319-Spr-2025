@@ -1,8 +1,14 @@
 val it = () : unit
 val match1 = true : bool
-val match2 = false : bool
+val match2 = true : bool
 val match3 = true : bool
 val match4 = true : bool
 val match5 = true : bool
 val match6 = true : bool
+val match7 = false : bool
+val match8 = false : bool
+val match9 = false : bool
+val match10 = true : bool
+val match11 = true : bool
+val match12 = false : bool
 - 

@@ -1,7 +1,13 @@
 print "===TEST START===\n";
-val match1 = isMatch "*a*b*" "xaybz";  
-val match2 = isMatch "ab*c" "abcd";    
-val match3 = isMatch "a*b*c" "aabbc";  
-val match4 = isMatch "abc*" "abcde";   
-val match5 = isMatch "a*c" "abbbbbbc"; 
-val match6 = isMatch "a*b*c*d*" "abcd";
+val match1 = isMatch "a*b*" "aaabbb";
+val match2 = isMatch "ab*c" "abbbc";
+val match3 = isMatch "a*b*c" "aabbc";
+val match4 = isMatch "abc*" "abc"; 
+val match5 = isMatch "abc*" "abccc"; 
+val match6 = isMatch "a*b*c*" "aaabbbcccc";
+val match7 = isMatch "a*b*c" "aabbcc";
+val match8 = isMatch "*abc" "xyzabc";   (* invalid pattern *)
+val match9 = isMatch "a*b*" "aabbxyz";
+val match10 = isMatch "a*b*c" "c";
+val match11 = isMatch "b*" "bbbb";
+val match12 = isMatch "b*" "c";
