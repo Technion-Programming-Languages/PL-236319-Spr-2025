@@ -227,8 +227,8 @@ val op-- = range;
 ### `take` and `drop`
 
 $$xs = [x_1, x_2, x_3, \ldots, x_k, x_{k+1}, \ldots, x_n]$$
-$$take(k, xs) = [x_1, x_2, x_3, \ldots, x_k]$$
-$$drop(k, xs) = [x_{k+1}, \ldots, x_n]$$
+$$take (k, xs) = [x_1, x_2, x_3, \ldots, x_k]$$
+$$drop (k, xs) = [x_{k+1}, \ldots, x_n]$$
 
 <!--vert-->
 
@@ -280,8 +280,8 @@ drop (0,       [6,5,4])
 normal recursion
 
 ```sml
-fun take(0, _)     = []
-  | take(i, x::xs) = x::(take(i-1, xs));
+fun take (0, _)     = []
+  | take (i, x::xs) = x::(take (i-1, xs));
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -711,8 +711,8 @@ fun append ...
 NOTE:
 
 ```sml
-fun aux([], ys) = ys
-  | aux(x::xs, ys) = aux (xs, x::ys);
+fun aux ([], ys) = ys
+  | aux (x::xs, ys) = aux (xs, x::ys);
 
 fun append (xs, ys) = aux (aux (xs, []), ys);
 ```

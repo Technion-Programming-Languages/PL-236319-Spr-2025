@@ -153,7 +153,7 @@ fun something5 (f:int*int->int) y = f (5, y);
 
 val add5 = something5 op+;
 
-fun intsec x (f:int*int->int) y = f(x,y);
+fun intsec x (f:int*int->int) y = f (x, y);
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -219,7 +219,7 @@ fun f2 g x = g (f2 g) x;
 What will be printed?
 
 ```sml
-fun f3 x y z = (x, x(y), y(z));
+fun f3 x y z = (x, x (y), y (z));
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 

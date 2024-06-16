@@ -475,7 +475,7 @@ and neg d = if d > 0.0 then pos (d - 2.0) - 1.0 / d
 
 fun sum (d, one) =
     if d > 0.0
-    then sum(d - 2.0, ~one) + one / d
+    then sum (d - 2.0, ~one) + one / d
     else 0.0;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
