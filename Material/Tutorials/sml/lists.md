@@ -39,8 +39,8 @@ And repetitions count
 Elements may have any type
 
 ```sml
-[(1,"One"),(2,"Two")] : (int*string) list
-[[3.1],[],[5.7, ~0.6]]: real list list
+[(1, "One"), (2, "Two")] : (int*string) list
+[[3.1], [], [5.7, ~0.6]]: real list list
 ```
 
 ... but all elements must have the same type
@@ -108,7 +108,7 @@ Use the infix operator `::` (aka `cons`) to build a list
 `::` is a *constructor* so it can be used in patterns
 
 ```sml
-fun replace_head (_::t) x = x :: t
+fun replace_head (_ :: t) x = x :: t
   | replace_head [] _ = [];
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
@@ -126,7 +126,7 @@ fun replace_head (_::t) x = x :: t
 
 ```sml
 fun null [] = true
-  | null (_::_) = false;
+  | null (_ :: _) = false;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -137,7 +137,7 @@ fun null [] = true
 `hd` - evaluates to the head of a non-empty list
 
 ```sml
-fun hd (x::_) = x;
+fun hd (x :: _) = x;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -147,7 +147,7 @@ fun hd (x::_) = x;
 ### builtin fundamental functions
 
 ```sml
-hd[ [ [1,2], [3] ], [ [4] ] ];
+hd [ [ [1,2], [3] ], [ [4] ] ];
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -168,7 +168,7 @@ hd it;
 `tl` - evaluates to the tail of a non-empty list
 
 ```sml
-fun tl (_::xs) = xs;
+fun tl (_ :: xs) = xs;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -204,7 +204,7 @@ tl it;
 ```sml
 fun range (m, n) =
   if m = n then []
-  else m :: (range (m+1, n));
+  else m :: (range (m + 1, n));
 
 range (2, 5);
 ```
@@ -236,19 +236,19 @@ $$drop (k, xs) = [x_{k+1}, \ldots, x_n]$$
 
 ```sml
 fun take (0, _)     = []
-  | take (i, x::xs) = x :: (take (i-1, xs));
+  | take (i, x :: xs) = x :: (take (i - 1, xs));
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 ```sml
-take (3, [9,8,7,6,5,4])
-9 :: take (2, [8,7,6,5,4])
-9 :: (8 :: take (1, [7,6,5,4]))
-9 :: (8 :: (7 :: take (0, [6,5,4])))
+take (3, [9, 8, 7, 6, 5, 4])
+9 :: take (2, [8, 7, 6, 5, 4])
+9 :: (8 :: take (1, [7, 6, 5, 4]))
+9 :: (8 :: (7 :: take (0, [6, 5, 4])))
 9 :: (8 :: (7 :: []))
 9 :: (8 :: [7])
 9 :: [8,7]
-[9,8,7]
+[9, 8, 7]
 ```
 
 <!--vert-->
@@ -257,16 +257,16 @@ take (3, [9,8,7,6,5,4])
 
 ```sml
 fun drop (0, xs)    = xs
-  | drop (i, _::xs) = drop (i-1, xs);
+  | drop (i, _ :: xs) = drop (i - 1, xs);
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 ```sml
-drop (3, [9,8,7,6,5,4])
-drop (2,   [8,7,6,5,4])
-drop (1,     [7,6,5,4])
-drop (0,       [6,5,4])
-[6,5,4]
+drop (3, [9, 8, 7, 6, 5, 4])
+drop (2,   [8, 7, 6, 5, 4])
+drop (1,     [7, 6, 5, 4])
+drop (0,       [6, 5, 4])
+[6, 5, 4]
 ```
 
 ---
@@ -281,7 +281,7 @@ normal recursion
 
 ```sml
 fun take (0, _)     = []
-  | take (i, x::xs) = x::(take (i-1, xs));
+  | take (i, x :: xs) = x :: (take (i - 1, xs));
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -289,7 +289,7 @@ tail recursion
 
 ```sml
 fun drop (0, xs)    = xs
-  | drop (i, _::xs) = drop (i-1, xs);
+  | drop (i, _ :: xs) = drop (i - 1, xs);
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -299,7 +299,7 @@ fun drop (0, xs)    = xs
 
 ```sml
 fun length []      = 0
-  | length (_::xs) = 1 + length xs;
+  | length (_ :: xs) = 1 + length xs;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -308,7 +308,7 @@ Use an **accumulator** to make it iterative
 ```sml
 local
   fun ilen (n, [])    = n
-    | ilen (n, _::xs) = ilen (n+1, xs)
+    | ilen (n, _ :: xs) = ilen (n + 1, xs)
 in
   fun length xs = ilen (0, xs)
 end;
@@ -324,7 +324,7 @@ end;
 ```sml
 infix @;
 fun []      @ ys = ys
-  | (x::xs) @ ys = x :: (xs @ ys);
+  | (x :: xs) @ ys = x :: (xs @ ys);
 
 ["Append", "is"] @ ["never", "boring"];
 ```
@@ -353,7 +353,7 @@ B1 orelse  B2 = if B1 then true else B2;
 fun even n = (n mod 2 = 0);
 
 fun powoftwo n =
-  (n=1) orelse
+  (n = 1) orelse
   (even n andalso powoftwo (n div 2));
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
@@ -366,14 +366,14 @@ Is `powoftwo` tail-recursive?
 
 ```sml
 fun map f []      = []
-  | map f (x::xs) = (f x) :: (map f xs);
+  | map f (x :: xs) = (f x) :: (map f xs);
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 ```sml
-val sqlist = map (fn x => x*x);
+val sqlist = map (fn x => x * x);
 
-sqlist [1,2,3];
+sqlist [1, 2, 3];
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -384,7 +384,7 @@ sqlist [1,2,3];
 Transposing a matrix using `map`:
 
 ```sml
-fun transp ([]::_) = []
+fun transp ([] :: _) = []
   | transp rows =
       (map hd rows) :: (transp (map tl rows));
 ```
@@ -396,14 +396,14 @@ fun transp ([]::_) = []
 
 ```sml
 fun filter pred []      = []
-  | filter pred (x::xs) =
-       if pred x then (x:: filter pred xs)
-                 else      filter pred xs;
+  | filter pred (x :: xs) =
+       if pred x then (x :: filter pred xs)
+                 else       filter pred xs;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 ```sml
-filter (fn x => x mod 2 = 0) [1,2,3,4,5];
+filter (fn x => x mod 2 = 0) [1, 2, 3, 4, 5];
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -418,7 +418,7 @@ a polynomial is represented as a list of `$(coeff,degree)$` pairs
 $$5x^3 + 2x + 7$$
 
 ```sml
-type polynomial = (int*int) list;
+type polynomial = (int * int) list;
 val a = [(5,3), (2,1), (7,0)]: polynomial;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
@@ -434,7 +434,7 @@ fun derive (p: polynomial): polynomial =
     List.filter
         (fn (coeff, deg) => deg >= 0)
         (map
-            (fn (coeff, deg) => (coeff*deg, deg-1))
+            (fn (coeff, deg) => (coeff * deg, deg - 1))
             p
         )
 ;
@@ -449,7 +449,7 @@ derive a;
 
 ```sml
 fun find f [] = NONE
-  | find f (x::xs) = if f x then SOME x else find f xs;
+  | find f (x :: xs) = if f x then SOME x else find f xs;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -465,7 +465,7 @@ Bound as `List.find`
 
 ```sml
 fun foldl f init []      = init
-  | foldl f init (x::xs) = foldl f (f (x, init)) xs;
+  | foldl f init (x :: xs) = foldl f (f (x, init)) xs;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -508,7 +508,7 @@ fun xs @ ys = foldr op:: ys xs;
 
 ```sml
 fun exists p []      = false
-  | exists p (x::xs) = (p x) orelse exists p xs;
+  | exists p (x :: xs) = (p x) orelse exists p xs;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -547,7 +547,7 @@ Bound as `List.all`
 
 ```sml
 fun disjoint (xs, ys) =
-  all (fn x => all (fn y => x<>y) ys) xs;
+  all (fn x => all (fn y => x <> y) ys) xs;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -636,7 +636,7 @@ insSort (op<) [1, ~3, 5, 0];
 ```sml
 fun upto m n = if (m > n)
     then []
-    else m::(upto (m+1) n)
+    else m :: (upto (m + 1) n)
 ;
 
 infix o;
@@ -712,7 +712,7 @@ NOTE:
 
 ```sml
 fun aux ([], ys) = ys
-  | aux (x::xs, ys) = aux (xs, x::ys);
+  | aux (x :: xs, ys) = aux (xs, x :: ys);
 
 fun append (xs, ys) = aux (aux (xs, []), ys);
 ```
@@ -733,7 +733,7 @@ fun flatten ...
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 ```sml
-[1,2,3,4,5,6,7,8,9] = flatten [[1,2,3],[4,5,6],[],[7,8,9]];
+[1, 2, 3, 4, 5, 6, 7, 8, 9] = flatten [[1, 2, 3], [4, 5, 6], [], [7, 8, 9]];
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
