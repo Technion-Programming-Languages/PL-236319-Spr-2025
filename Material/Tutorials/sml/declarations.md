@@ -33,7 +33,7 @@ During execution, the program generates more values by using **operators** for *
 
 * `div` creates values of type int
 * `fn ? => ?` creates values which are functions
-* `fun x(t) = ...` creates a value which is a fucntion and names it
+* `fun x (t) = ...` creates a value which is a fucntion and names it
 
 A value constructor is always an operator
 
