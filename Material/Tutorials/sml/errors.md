@@ -246,7 +246,7 @@ floor it = 8;
 
 ### Explanation
 
-This specifically came up in the home ex. Terribly annoying floating-point arithmetic error. When doing integer arithmetic, implement manually with a recursive function.
+Terribly annoying floating-point arithmetic error. When doing integer arithmetic, implement manually with a recursive function.
 
 ---
 
