@@ -24,7 +24,7 @@ fun map f inpList = foldl
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 ```sml
-map (fn x => x * 2) [1,2,3,4];
+map (fn x => x * 2) [1, 2, 3, 4];
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 <!--vert-->
@@ -41,8 +41,8 @@ fun map f inpList = foldl
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 ```sml
-map (fn x => x * 2) [1,2,3,4];
-(* val it = [2,4,6,8] : int list *)
+map (fn x => x * 2) [1, 2, 3, 4];
+(* val it = [2, 4, 6, 8] : int list *)
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 <!--vert-->
@@ -77,7 +77,7 @@ insSort (op<) [1, ~3, 5, 0];
 ```sml
 fun insSort lt inpList = foldr
     (let fun ins v [] = [v]
-       	   | ins v (x::xs) = if lt (v, x) then v::x::xs else x::(ins v xs)
+       	   | ins v (x :: xs) = if lt (v, x) then v :: x :: xs else x :: (ins v xs)
      in (fn (a, l) => ins a l) end)
     []
     inpList
@@ -87,7 +87,7 @@ fun insSort lt inpList = foldr
 
 ```sml
 insSort (op<) [1, ~3, 5, 0];
-(* val it = [~3,0,1,5] : int list *)
+(* val it = [~3, 0, 1, 5] : int list *)
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -100,7 +100,7 @@ Let's define:
 ```sml
 fun upto m n = if (m > n)
     then []
-    else m::(upto (m+1) n)
+    else m :: (upto (m + 1) n)
 ;
 
 infix o;
@@ -125,7 +125,7 @@ val a = map (upto 2) (upto 2 5);
 
 ```sml
 val a = map (upto 2) (upto 2 5);
-(* val a = [[2],[2,3],[2,3,4],[2,3,4,5]] : int list list *)
+(* val a = [[2], [2, 3], [2, 3, 4],[2, 3, 4, 5]] : int list list *)
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -137,7 +137,7 @@ What will be printed?
 ```sml
 map
     (
-        (fn f => null (f()))
+        (fn f => null (f ()))
         o
         (fn t => fn () => tl t)
     )
@@ -152,13 +152,13 @@ map
 ```sml
 map
     (
-        (fn f => null (f()))
+        (fn f => null (f ()))
         o
         (fn t => fn () => tl t)
     )
     a
 ;
-(* val it = [true,false,false,false] : bool list *)
+(* val it = [true, false, false, false] : bool list *)
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -184,7 +184,7 @@ map
     (List.filter (fn t => t mod 2 = 0))
     a
 ;
-(* val it = [[2],[2],[2,4],[2,4]] : int list list *)
+(* val it = [[2], [2], [2, 4], [2, 4]] : int list list *)
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -200,7 +200,7 @@ fun append ...
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 ```sml
-append ([1,2,3], [4,5,6]);
+append ([1, 2, 3], [4, 5, 6]);
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 **reminder**:
@@ -217,7 +217,7 @@ fun []      @ ys = ys
 ```sml
 local
   fun aux([], ys) = ys
-    | aux(x::xs, ys) = aux (xs, x::ys)
+    | aux(x :: xs, ys) = aux (xs, x :: ys)
 in
   fun append (xs, ys) = aux (aux (xs, []), ys)
 end;
@@ -226,8 +226,8 @@ end;
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 ```sml
-append ([1,2,3], [4,5,6]);
-(* val it = [1,2,3,4,5,6] : int list *)
+append ([1, 2, 3], [4, 5, 6]);
+(* val it = [1, 2, 3, 4, 5, 6] : int list *)
 ```
 
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
@@ -248,7 +248,7 @@ fun flatten ...
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 ```sml
-flatten [[1,2,3],[4,5,6],[],[7,8,9]];
+flatten [[1, 2, 3], [4, 5, 6], [], [7, 8, 9]];
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -262,8 +262,8 @@ fun flatten xs = foldr (op@) [] xs;
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 ```sml
-flatten [[1,2,3],[4,5,6],[],[7,8,9]];
-(* val it = [1,2,3,4,5,6,7,8,9] : int list *)
+flatten [[1, 2, 3], [4, 5, 6], [], [7, 8, 9]];
+(* val it = [1, 2, 3, 4, 5, 6, 7, 8, 9] : int list *)
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 

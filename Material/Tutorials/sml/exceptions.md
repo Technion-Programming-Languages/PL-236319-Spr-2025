@@ -16,9 +16,9 @@
 ```sml
 datatype int_sol = Success of int | Failure | Impossible;
 
-case methodA(problem) of
+case methodA problem of
     Success s  => Int.toString s
-  | Failure    => (case methodB(problem) of
+  | Failure    => (case methodB problem of
                       Success s  => Int.toString s
                     | Failure    => "Both failed"
                     | Impossible => "No Good")
@@ -49,9 +49,9 @@ fun inner = do_calculation
     if local_error then raise local_error,
     if global_error then raise global_error;
 
-fun middle = inner(…) handle local_error;
+fun middle = inner (…) handle local_error;
 
-fun outer = middle(…) handle global_error;
+fun outer = middle (…) handle global_error;
 ```
 
 ---
@@ -134,11 +134,11 @@ local val name = raise Exp in some_declaration end
 ```sml
 exception Empty;
 
-fun hd (x::_) = x
-  | hd []     = raise Empty;
+fun hd (x :: _) = x
+  | hd []       = raise Empty;
 
-fun tl (_::xs) = xs
-  | tl []      = raise Empty;
+fun tl (_ :: xs) = xs
+  | tl []        = raise Empty;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -188,7 +188,7 @@ Exp_0 handle Cons1 x => Exp_1
 ```sml
 fun throw _ = raise Empty;
 exception Underflow;
-fun bar x = if x>0 then x else raise Underflow;
+fun bar x = if x > 0 then x else raise Underflow;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -197,9 +197,9 @@ fun bar x = if x>0 then x else raise Underflow;
 ### using exception handling
 
 ```sml
-case methodA(problem) of
+case methodA problem of
     Success s  => Int.toString s
-  | Failure    => (case methodB(problem) of
+  | Failure    => (case methodB problem of
                       Success s  => Int.toString s
                     | Failure    => "Both failed"
                     | Impossible => "No Good")

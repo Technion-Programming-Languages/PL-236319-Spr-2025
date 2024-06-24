@@ -600,7 +600,7 @@ fun map f inpList = foldl
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
 ```sml
-map (fn x => x * 2) [1,2,3,4];
+map (fn x => x * 2) [1, 2, 3, 4];
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
@@ -663,7 +663,7 @@ What will be printed?
 ```sml
 map
     (
-        (fn f => null (f()))
+        (fn f => null (f ()))
         o
         (fn t => fn () => tl t)
     )

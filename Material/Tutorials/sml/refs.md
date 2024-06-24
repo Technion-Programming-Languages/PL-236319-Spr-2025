@@ -149,7 +149,7 @@ type (''a, 'b) memoizer = {max_size: int, memory: (''a * 'b) list ref};
 ```sml
 fun memoizer_put (memo: (''a, 'b) memoizer) x y =
 	let 
-      val state = #memory(memo)
+      val state = #memory memo
     in
       state :=
           (if length (!state) < #max_size memo then
@@ -169,8 +169,8 @@ fun memoizer_put (memo: (''a, 'b) memoizer) x y =
 
 ```sml
 fun memoize (memo: (''a, 'b) memoizer) f x =
-    case (List.find (fn t => x = #1 t) (!(#memory memo))) of
-      SOME (_, y) => y
+    case (List.find (fn (x', _) => x = x') (!(#memory memo))) of
+      SOME (_, y') => y'
     | NONE => (
         let val y = f x in
             memoizer_put memo x y;
@@ -195,7 +195,7 @@ fun fib 0 = 0
   | fib n = let
         val aux = memoize memo fib
     in
-        (aux (n - 1)) + (aux (n - 2))
+        aux (n - 1) + aux (n - 2)
     end
 end;
 ```
@@ -215,7 +215,7 @@ fib 43;
 ```sml
 fun fib_exp 0 = 0
   | fib_exp 1 = 1
-  | fib_exp n = (fib_exp (n-1)) + (fib_exp (n-2));
+  | fib_exp n = fib_exp (n - 1) + fib_exp (n - 2);
 fib_exp 43;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
