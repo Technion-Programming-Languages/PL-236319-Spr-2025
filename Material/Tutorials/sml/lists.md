@@ -507,7 +507,7 @@ fun xs @ ys = foldr op:: ys xs;
 ### builtin function `exists`
 
 ```sml
-fun exists p []      = false
+fun exists p []        = false
   | exists p (x :: xs) = (p x) orelse exists p xs;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
@@ -526,8 +526,8 @@ Bound as `List.exists`
 ### builtin function `all`
 
 ```sml
-fun all p []      = true
-  | all p (x::xs) = (p x) andalso all p xs;
+fun all p []        = true
+  | all p (x :: xs) = (p x) andalso all p xs;
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
