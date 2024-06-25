@@ -1,0 +1,23 @@
+print "===TEST START===\n";
+(* Testing the build4 function *)
+val test1 = build4 (1, "a", 2, "b");
+val test2 = build4 ("hello", 3.14, "world", 42.0);
+val test3 = build4 (true, 1, false, 2);
+val test4 = build4 (#"a", "hello", #"b", "world");
+
+(* Testing the unzip function *)
+val test5 = unzip (1::: "a"::: 2::: "b"::: NIL);
+val test6 = unzip ("x"::: 1.1::: "y"::: 2.2::: NIL);
+val test7 = unzip (#"a"::: "hello"::: #"b"::: "world"::: NIL);
+val test8 = unzip (true:::1:::false:::2:::NIL);
+val testlol = unzip ("never":::"never":::"gonna":::"gonna":::"give":::"let":::"you":::"you":::"up":::"down":::NIL)
+
+(* Testing the zip function *)
+val test9 = zip ([1, 2], ["a", "b"]);
+val test10 = zip (["x", "y"], [1.1, 2.2]);
+val test11 = zip ([#"a", #"b"], ["hello", "world"]);
+val test12 = zip ([true, false], [1, 2]);
+
+(* Handling exceptions in zip function tests *)
+val test13 = zip ([1, 2], ["a"]) handle Empty => NIL;
+val test14 = zip (["x"], [1.1, 2.2]) handle Empty => NIL;

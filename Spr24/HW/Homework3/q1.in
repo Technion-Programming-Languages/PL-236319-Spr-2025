@@ -1,0 +1,22 @@
+print "===TEST START===\n";
+(* Testing to_binary function *)
+to_binary 0;
+to_binary 5;  
+to_binary 1;  
+to_binary 16;
+
+(* Testing encode function *)
+encode [1, 1, 0, 1];
+encode [1, 0, 1, 1, 1, 1];
+encode [0, 0, 0, 1];
+encode [0, 1, 0, 0, 0, 0];
+encode [1, 0, 0, 0, 0, 0];
+encode [1, 1];
+
+(* Testing decode function *)
+decode ([0,1,0,1,1], 4);
+decode ([0,1,0,0,1,1,0,0,1], 6);
+decode ([1,0,0,1,1], 4);
+decode ([1,0,1,1,0,0,0,0,1], 6);
+decode ([0,1,1,1,0,0,0,0,1], 6);
+decode ([0,1,1], 2);
