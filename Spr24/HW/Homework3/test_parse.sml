@@ -9,13 +9,13 @@ use "hw3_q3.sml";
 exception TestFailure of string;
 
 local
-    fun sexp_to_string (ATOM(SYMBOL(s))) = s
-    | sexp_to_string (ATOM(NIL)) = "NIL"
-    | sexp_to_string (CONS(x, y)) = "(" ^ sexp_to_string x ^ "." ^ sexp_to_string y ^ ")";
+    fun sexp_to_string (ATOM(SYMBOL s)) = s
+    | sexp_to_string (ATOM NIL) = "NIL"
+    | sexp_to_string (CONS (x, y)) = "(" ^ sexp_to_string x ^ "." ^ sexp_to_string y ^ ")";
 in
     fun assert_equal (expected, actual, msg) =
         if expected = actual then ()
-        else raise TestFailure(msg ^ ": expected " ^ sexp_to_string expected ^ ", but got " ^ sexp_to_string actual);
+        else raise TestFailure (msg ^ ": expected " ^ sexp_to_string expected ^ ", but got " ^ sexp_to_string actual);
 end;
 
 let
