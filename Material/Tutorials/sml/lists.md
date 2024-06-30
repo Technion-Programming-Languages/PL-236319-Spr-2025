@@ -413,6 +413,26 @@ filter (fn x => x mod 2 = 0) [1, 2, 3, 4, 5];
 
 ### using `map` and `filter`
 
+```sml
+val noisyAsciiList = [
+    110, 101, 118, 101, 114, 32, 103, 111, 110, 110, 97, 32, 103,
+    105, 118, 101, 32, 121, 111, 117, 32, 117, 112, 44, 32, 999, 
+    110, 101, 118, 101, 114, 32, 103, 111, 110, 110, 97, 32, 108, 
+    101, 116, 32, 121, 111, 117, 32, 100, 111, 119, 110, 999
+];
+    
+String.implode (
+	map (fn i => Char.chr i) (
+    	filter (fn i => i >= 32 andalso i <= 126) 
+        	noisyAsciiList));
+```
+
+<!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
+
+<!--vert-->
+
+### using `map` and `filter`
+
 a polynomial is represented as a list of `$(coeff,degree)$` pairs
 
 $$5x^3 + 2x + 7$$
