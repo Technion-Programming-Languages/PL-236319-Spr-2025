@@ -169,14 +169,7 @@ fun memoizer_put (memo: (''a, 'b) memoizer) x y =
 
 ```sml
 fun memoize (memo: (''a, 'b) memoizer) f x =
-    case (List.find (fn (x', _) => x = x') (!(#memory memo))) of
-      SOME (_, y') => y'
-    | NONE => (
-        let val y = f x in
-            memoizer_put memo x y;
-            y
-        end
-    );
+    
 ```
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
 
