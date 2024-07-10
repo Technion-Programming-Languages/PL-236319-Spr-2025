@@ -103,8 +103,6 @@ val test_simple22 = sexp_to_string (first (eval "((lambda (x y) (+ x y)) 2 3 4)"
 val test_simple23 = sexp_to_string (first (eval "(null (quote 2))" env)) = "nil";
 val test_simple24 = sexp_to_string (first (eval "(null (quote ()))" env)) = "t";
 
-(* Test the evaluation of the label function *)
-(* Test the evaluation of the math operations *)
 (* cons on quotes *)
 val test_advanced1 = sexp_to_string (first (eval "(cons (quote 1) (quote 2))" env)) = "(1 . 2)";
 val test_advanced2 = sexp_to_string (first (eval "(cons (quote 3) (cons (quote 1) (quote 2)))" env)) = "(3 1 . 2)";
@@ -177,7 +175,7 @@ in
                             | _ => (ATOM (SYMBOL "bad"))) = "good"
 end;
 
-(* nested lambda with label *)
+(* bonus: label *)
 val test_advanced26 = sexp_to_string (first (eval "((label fact \
                                                     \(lambda (n) \
                                                         \(cond ((eq n 0) 1) \
