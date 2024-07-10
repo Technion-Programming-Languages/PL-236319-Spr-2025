@@ -1,5 +1,8 @@
 use "hw4_q1.sml";
 
+(* TODO, REPLACE WITH PATH TO YOUR PARSER *)
+use "PATH_TO_YOUR_PARSER.sml"
+
 exception LispError;
 
 (* Helper function - feel free to delete *)
@@ -9,10 +12,6 @@ local
     fun tokenize x = 
         String.tokens (fn c: char => c = #" ") 
             (String.translate (fn #"(" => "( " | #")" => " )" | c => str c) x);
-
-    (* ======================= *)
-    (* INSERT YOUR PARSER HERE *)
-    (* ======================= *)
 
     (* Helper functions - feel free to delete *)
     (* ====================================== *)
