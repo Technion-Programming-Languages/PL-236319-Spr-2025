@@ -45,11 +45,17 @@ Control.Print.printDepth := 100;
 fun print_atom (SYMBOL s) = s
   | print_atom NIL = "nil"
 
+fun ends_with_nil (CONS (car, cdr)) = ends_with_nil cdr
+  | ends_with_nil (ATOM NIL) = true
+  | ends_with_nil _ = false
+
 fun sexp_to_string (ATOM a) = print_atom a
   | sexp_to_string (CONS (car, cdr)) = "(" ^ print_cons (car, cdr) ^ ")"
 
 and print_cons (car, ATOM NIL) = sexp_to_string car
-  | print_cons (car, CONS (cadr, cddr)) = sexp_to_string car ^ " " ^ print_cons (cadr, cddr)
+  | print_cons (car, CONS (cadr, cddr)) = (case ends_with_nil (CONS (cadr, cddr)) of
+      true => sexp_to_string car ^ " " ^ print_cons (cadr, cddr)
+    | false => sexp_to_string car ^ " . " ^ sexp_to_string (CONS (cadr, cddr)))
   | print_cons (car, cdr) = sexp_to_string car ^ " . " ^ sexp_to_string cdr;
 
 val env: (string -> SExp) list = emptyNestedEnv();
@@ -65,7 +71,7 @@ val test_simple3 = sexp_to_string (first (eval "(unknown)" env)) = "lisp-error";
 val test_simple4 = sexp_to_string (first (eval "(cons 2 3)" env)) = "(2 . 3)";
 
 (* Test the evaluation of nested cons functions *)
-val test_simple5 = sexp_to_string (first (eval "(cons (cons 2 3) (cons 4 5))" env)) = "((2 . 3) 4 . 5)";
+val test_simple5 = sexp_to_string (first (eval "(cons (cons 2 3) (cons 4 5))" env)) = "((2 . 3) . (4 . 5))";
 
 (* Test the evaluation of the car function *)
 val test_simple6 = sexp_to_string (first (eval "(car (cons 2 3))" env)) = "2";
@@ -105,7 +111,7 @@ val test_simple24 = sexp_to_string (first (eval "(null (quote ()))" env)) = "t";
 
 (* cons on quotes *)
 val test_advanced1 = sexp_to_string (first (eval "(cons (quote 1) (quote 2))" env)) = "(1 . 2)";
-val test_advanced2 = sexp_to_string (first (eval "(cons (quote 3) (cons (quote 1) (quote 2)))" env)) = "(3 1 . 2)";
+val test_advanced2 = sexp_to_string (first (eval "(cons (quote 3) (cons (quote 1) (quote 2)))" env)) = "(3 . (1 . 2))";
 
 (* car on cdr *)
 val test_advanced3 = sexp_to_string (first (eval "(car (cdr (quote (1 2 3))))" env)) = "2";
