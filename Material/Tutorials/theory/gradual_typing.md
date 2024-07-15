@@ -227,15 +227,15 @@ void main()
 
 The TAs of PL class has argued whether SML is a gradually typed language or not.
 
-Adi, the head TA, claims that SML is a gradually typed language, since not all values must be annotated with types.
+Andrey claims that SML is a gradually typed language, since not all values must be annotated with types.
 
-Is Adi correct?
+Is Andrey correct?
 
 <!--vert-->
 
 ### Answer
 
-Adi is not correct.
+Andrey is not correct.
 
 SML is strictly statically typed. even though not all values must be annotated, their type must be inferred at **compile time**. Each value has a single concrete type that is known and being checked at compile time.
 

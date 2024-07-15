@@ -325,6 +325,4 @@ and 'a bar = Bar of 'a foo | None;
 
 Foo (1, Bar (Foo (2, None)));
 ```
-
-Have we seen another datatype in SML defined by multiple recursion?
 <!-- .element: data-thebe-executable-sml data-language="text/x-ocaml" -->
