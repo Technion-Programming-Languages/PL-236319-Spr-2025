@@ -188,6 +188,31 @@ val test_advanced26 = sexp_to_string (first (eval "((label fact \
                                                             \(t (* n (fact (- n 1))))))) \
                                                     \5)" env)) = "120";
 
+val test_advanced27 = sexp_to_string (first (eval "((label fact \
+                                                    \(lambda (n) \
+                                                        \(cond ((eq n 0) 1) \
+                                                            \(t (* n (fact (- n 1))))))) \
+                                                    \((lambda (x) \
+                                                    \((lambda (y) \
+                                                        \(cond \
+                                                            \((eq y 1) 1) \
+                                                            \((eq y 2) 2) \
+                                                            \(t 3))) \
+                                                    \x)) \
+                                                \2))" env)) = "2";
+
+val test_advanced28 = sexp_to_string (first (eval "((label sum-list \
+                                                     \(lambda (lst) \
+                                                       \(cond ((null lst) 0) \
+                                                             \(t (+ (car lst) (sum-list (cdr lst))))))) \
+                                                    \(quote (1 2 3 4 5)))" env)) = "15";
+
+val test_advanced29 = sexp_to_string (first (eval "((label sum-to-n \
+                                                     \(lambda (n acc) \
+                                                       \(cond ((eq n 0) acc) \
+                                                             \(t (sum-to-n (- n 1) (+ acc n)))))) \
+                                                    \10 0)" env)) = "55";
+
 (* freestyle of combinations on atom, null, eq, car, cdr, cons *)
 val freestyle1 = sexp_to_string (first (eval "(atom (quote (1 2 3)))" env)) = "nil";
 val freestyle2 = sexp_to_string (first (eval "(null (quote ()))" env)) = "t";
