@@ -1,0 +1,47 @@
+(* redefine in case the code wasn't copied *)
+
+fun coords (3, _) = DNil
+  | coords (_, 3) = DNil
+  | coords (x, y) = DCons((x, y), fn () => coords (x + 1, y), fn () => coords (x, y + 1));
+fun pcoords (3, _) = DNil
+  | pcoords (_, 3) = DNil
+  | pcoords (x, y) = (
+    print ("exec: (" ^ Int.toString x ^ ", " ^  Int.toString y ^ ")\n"); 
+    DCons((x, y), fn () => pcoords (x, y + 1), fn () => pcoords (x + 1,y))
+  );
+
+fun next Nil = Nil
+  | next (Cons(x, xf)) = xf ();
+  
+fun take s 0 = []
+  | take Nil _ = []
+  | take (Cons (x, xf)) n = x :: take (xf ()) (n - 1);
+
+val p = pcoords (0, 0);
+val s = coords (0, 0);
+
+print "===TEST START===\n";
+
+(* Testing toMatr function *)
+toMatrix s (3, 2);
+toMatrix s (0, 3);
+toMatrix s (3, 1);
+toMatrix s (3, 3);
+
+(* Testing Q *)
+toMatrix (Q ()) (3, 4);
+toMatrix (Q ()) (3, 3);
+toMatrix (Q ()) (4, 3);
+
+(* Testing diags *)
+take (diags (Q ())) 10;
+diags p;
+next it;
+next it;
+next it;
+next it;
+next it;
+next it;
+next it;
+next it;
+next it;

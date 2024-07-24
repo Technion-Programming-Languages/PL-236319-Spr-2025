@@ -1,0 +1,35 @@
+val it = () : unit
+val it = [[(0,0),(0,1)],[(1,0),(1,1)],[(2,0),(2,1)]] : (int * int) list list
+val it = [] : (int * int) list list
+val it = [[(0,0)],[(1,0)],[(2,0)]] : (int * int) list list
+val it = [[(0,0),(0,1),(0,2)],[(1,0),(1,1),(1,2)],[(2,0),(2,1),(2,2)]]
+  : (int * int) list list
+val it =
+  [[(1,1),(2,1),(3,1),(4,1)],[(1,2),(2,2),(3,2),(4,2)],
+   [(1,3),(2,3),(3,3),(4,3)]] : (int * int) list list
+val it = [[(1,1),(2,1),(3,1)],[(1,2),(2,2),(3,2)],[(1,3),(2,3),(3,3)]]
+  : (int * int) list list
+val it =
+  [[(1,1),(2,1),(3,1)],[(1,2),(2,2),(3,2)],[(1,3),(2,3),(3,3)],
+   [(1,4),(2,4),(3,4)]] : (int * int) list list
+val it = [(1,1),(2,1),(1,2),(3,1),(2,2),(1,3),(4,1),(3,2),(2,3),(1,4)]
+  : (int * int) list
+val it = Cons ((0,0),fn) : (int * int) Seq
+exec: (1, 0)
+val it = Cons ((1,0),fn) : (int * int) Seq
+exec: (0, 1)
+val it = Cons ((0,1),fn) : (int * int) Seq
+exec: (2, 0)
+val it = Cons ((2,0),fn) : (int * int) Seq
+exec: (1, 1)
+val it = Cons ((1,1),fn) : (int * int) Seq
+exec: (0, 2)
+val it = Cons ((0,2),fn) : (int * int) Seq
+exec: (2, 1)
+val it = Cons ((2,1),fn) : (int * int) Seq
+exec: (1, 2)
+val it = Cons ((1,2),fn) : (int * int) Seq
+exec: (2, 2)
+val it = Cons ((2,2),fn) : (int * int) Seq
+val it = Nil : (int * int) Seq
+
