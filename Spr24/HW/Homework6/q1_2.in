@@ -1,0 +1,21 @@
+use_module(library(yall)).
+set_prolog_flag(answer_write_options, [quoted(true), portray(true), max_depth(0), spacing(next_argument)]).
+print("===TEST START===").
+
+{L}/(
+    findall(
+        [X],
+        merge_bt(bt(3, [bt(4, [])]), bt(5, [bt(7, [])]), X),
+        L1
+    ),
+    msort(L1, L)
+).
+
+{L}/(
+    findall(
+        [X],
+        merge_bt(bt(1, []), bt(5, []), X),
+        L1
+    ),
+    msort(L1, L)
+).

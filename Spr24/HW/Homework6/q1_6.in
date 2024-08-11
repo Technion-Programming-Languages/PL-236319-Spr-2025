@@ -1,0 +1,12 @@
+use_module(library(yall)).
+set_prolog_flag(answer_write_options, [quoted(true), portray(true), max_depth(0), spacing(next_argument)]).
+print("===TEST START===").
+
+{L}/(
+    findall(
+        [X],
+        sort_me([5, -2, 10, 14, 1, 4, 0], X),
+        L1
+    ),
+    msort(L1, L)
+).

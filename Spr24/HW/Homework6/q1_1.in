@@ -1,0 +1,6 @@
+use_module(library(yall)).
+set_prolog_flag(answer_write_options, [quoted(true), portray(true), max_depth(0), spacing(next_argument)]).
+print("===TEST START===").
+
+once(bt(5, [bt(7, [])])).
+once(bt(7, [bt(5, [])])).
