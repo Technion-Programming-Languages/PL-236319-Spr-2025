@@ -1,11 +1,36 @@
 use_module(library(yall)).
 set_prolog_flag(answer_write_options, [quoted(true), portray(true), max_depth(0), spacing(next_argument)]).
+
+assert(is_heap([]) :- !).
+assert((is_heap(X) :- is_heap_aux(X, 0), length(X, L), \+ nth1(L, X, empty))).
+assert(is_heap_aux([], _) :- !).
+assert((is_heap_aux([empty | Xs], I) :-
+    !, NI is I + 1,
+    is_heap_aux(Xs, NI))).
+assert((is_heap_aux([bt(V, L) | Xs], I) :-
+    bt(V, L),
+    length(L, I),
+    NI is I + 1,
+    is_heap_aux(Xs, NI))).
+
+assert(values([], [])).
+assert(values([empty | Xs], Ys) :-
+    values(Xs, Ys)).
+assert((values([bt(V, L) | Xs], Ys) :-
+    values(L, LV),
+    values(Xs, XsV),
+    append([V | LV], XsV, Ys))).
 print("===TEST START===").
 
 {L}/(
     findall(
-        [X, Y],
-        fetch_min(X, [empty, bt(3, [bt(4, [])])], Y),
+        [X, Z],
+        (
+            fetch_min(X, [empty, bt(3, [bt(4, [])])], Y),
+            is_heap(Y),
+            values(Y, YY),
+            msort(YY, Z)
+        ),
         L1
     ),
     msort(L1, L)
@@ -13,8 +38,13 @@ print("===TEST START===").
 
 {L}/(
     findall(
-        [X, Y],
-        fetch_min(X, [bt(4, [])], Y),
+        [X, Z],
+        (
+            fetch_min(X, [bt(4, [])], Y),
+            is_heap(Y),
+            values(Y, YY),
+            msort(YY, Z)
+        ),
         L1
     ),
     msort(L1, L)

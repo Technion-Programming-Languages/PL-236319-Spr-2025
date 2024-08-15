@@ -3,4 +3,6 @@ set_prolog_flag(answer_write_options, [quoted(true), portray(true), max_depth(0)
 print("===TEST START===").
 
 once(bt(5, [bt(7, [])])).
+once(bt(5, [bt(6, [bt(7, [])]), bt(8, [])])).
 once(bt(7, [bt(5, [])])).
+once(bt(5, [bt(8, []), bt(6, [bt(7, [])])])).
