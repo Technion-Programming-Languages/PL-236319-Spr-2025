@@ -237,22 +237,22 @@ how can a knight jump on an NxN chessboard in such a way that it visits every sq
 <!--vert-->
 
 ```prolog
-jump_dist(1,2).
-jump_dist(2,1).
-jump_dist(2,-1).
-jump_dist(1,-2).
-jump_dist(-1,-2).
-jump_dist(-2,-1).
-jump_dist(-2,1).
-jump_dist(-1,2).
+jump_dist(1, 2).
+jump_dist(2, 1).
+jump_dist(2, -1).
+jump_dist(1, -2).
+jump_dist(-1, -2).
+jump_dist(-2, -1).
+jump_dist(-2, 1).
+jump_dist(-1, 2).
 ```
 <!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
 
 <!--vert-->
 
-define `jump(N,A/B,C/D)` such that there's a jump from `A/B` to `C/D` on an NxN board
+define `jump(N, A/B, C/D)` such that there's a jump from `A/B` to `C/D` on an NxN board
 
-* either `A/B` are concrete or `C/D` are concrete
+* `A/B` are concrete
 
 ```prolog
 ```
@@ -261,10 +261,10 @@ define `jump(N,A/B,C/D)` such that there's a jump from `A/B` to `C/D` on an NxN 
 <!--vert-->
 
 ```prolog
-jump(N,A/B,C/D) :- 
-   jump_dist(X,Y), 
-   C is A+X, C > 0, C =< N,
-   D is B+Y, D > 0, D =< N.
+jump(N, A/B, C/D) :- 
+   jump_dist(X, Y), 
+   C is A + X, C > 0, C =< N,
+   D is B + Y, D > 0, D =< N.
 ```
 <!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
 
@@ -292,14 +292,14 @@ define `knights(N,Ks)` such that `Ks` is a valid knight's tour on an NxN chessbo
 
 ```prolog
 :- use_module(library(clpfd)).
-knights(N,Knights) :-
-    X in 1..N, Y in 1..N, label([X, Y]), M is N*N-1, knights(N,M,[X/Y],Knights).
-knights(_,0,Knights,Knights).
-knights(N,M,Visited,Knights) :-
+knights(N, Knights) :-
+    X in 1..N, Y in 1..N, label([X, Y]), M is N * N - 1, knights(N, M, [X/Y], Knights).
+knights(_, 0, Knights, Knights).
+knights(N, M, Visited, Knights) :-
    Visited = [X/Y|_],
-   jump(N,X/Y,U/V),
-   \+ member(U/V,Visited),
-   M1 is M-1,
-   knights(N,M1,[U/V|Visited],Knights).
+   jump(N, X/Y, U/V),
+   \+ member(U/V, Visited),
+   M1 is M - 1,
+   knights(N, M1, [U/V|Visited], Knights).
 ```
 <!-- .element: data-thebe-executable-prolog data-language="text/x-prolog" -->
