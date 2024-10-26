@@ -117,8 +117,4 @@ console.log(result); // "105"
 - **Compiled Languages**: The source code is translated into machine code before execution. This typically results in faster execution but requires a compilation step before running the program
 - **Interpreted Languages**: The source code is executed line by line, typically by an interpreter. This allows for more dynamic behavior but can be slower than compiled code
 
----
-
-## Bonus: Compiled vs. Interpreted
-
 These concepts are distinct from typing methodologies, focusing instead on execution mechanisms.
