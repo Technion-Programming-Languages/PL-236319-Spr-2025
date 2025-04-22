@@ -1,0 +1,61 @@
+print "===TEST START===\n";
+
+let
+    val test1 = 
+        Content (part(first_we_mine, then_we_craft), Content_End)
+    val result1 = good_part test1 ["first we mine", "then we craft"]
+in
+    result1
+end;
+
+let
+    val test2 = 
+        Content (part(I, am_Steve), 
+        Content (part(as_a_child, I_yeared_for_the_mines), Content_End))
+    val result2 = good_part test2 ["I", "am Steve", "as a child", "I yearned for the mines"]
+in
+    result2
+end;
+
+let
+    val test3 = 
+        Content (part(chicken, jockey), 
+        Content (part(ender, pearl), Content_End))
+    val result3 = good_part test3 ["chicken", "jockey", "ender", "pearl"]
+in
+    result3
+end;
+
+let
+    val test4 = 
+        Content (part(first_we_mine, then_we_craft), Content_End)
+    val result4 = good_part test4 ["first we mine", "then we craft", "extra word"]
+in
+    result4
+end;
+
+let
+    val test5 = 
+        Content (part(I, am_Steve), 
+        Content (part(flint, and_steel), Content_End))
+    val result5 = good_part test5 ["I", "first we mine", "then we craft", "am Steve"]
+in
+    result5
+end;
+
+let
+    val test6 = 
+        Content (part(first_we_mine, then_we_craft), Content_End)
+    val result6 = good_part test6 ["totem of undying", "then we craft"]
+in
+   result6
+end;
+
+let
+    val test7 = 
+        Content (part(slime, cube), 
+        Content (part(water_bucket, release), Content_End))
+    val result7 = good_part test7 ["*", "water bucket", "release"]
+in
+   result7
+end;

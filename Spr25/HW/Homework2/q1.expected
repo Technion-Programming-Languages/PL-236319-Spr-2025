@@ -1,0 +1,12 @@
+val it = () : unit
+val it = fn : ('a * 'b -> 'c) -> 'a -> 'b -> 'c -> ('d -> bool) -> 'd -> 'c
+val it = fn : real -> real -> bool
+val it = fn : ('a -> 'b) -> 'a list list -> 'b list list
+val it = fn : unit -> int
+val it = fn : ('a -> 'b) -> ('b -> 'c) -> 'a -> 'd -> 'c
+val it = fn : ('a -> 'b) -> 'a list -> 'c -> 'b list
+val it = fn : bool -> int -> 'a -> int -> 'a
+val it = fn : ('a -> 'b) -> ('a -> 'b -> 'c) -> 'a -> 'c
+val it = fn : ('a -> 'b) -> ('b -> 'c) -> 'a -> 'c
+val it = fn : ('a -> bool) -> (('a -> bool) -> 'b) -> 'a -> 'b -> 'b
+- 
