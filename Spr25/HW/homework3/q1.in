@@ -1,0 +1,83 @@
+print "===TEST START===\n";
+let
+    val verts1 = ["A", "B", "C"];
+    val edges1 = [("A", "B"), ("B", "C"), ("C", "A")];
+    val result1 = well_connected verts1 edges1
+in
+    result1
+end;
+
+let
+    val verts2 = ["A", "B", "C"];
+    val edges2 = [("A", "B"), ("B", "C")];
+    val result2 = well_connected verts2 edges2
+in
+    result2
+end;
+
+let
+    val verts3 = ["A"];
+    val edges3 = [];
+    val result3 = well_connected verts3 edges3
+in
+    result3
+end;
+
+let
+    val verts4 = ["A", "B", "C"];
+    val edges4 = [("A", "A"), ("B", "B"), ("C", "C")];
+    val result4 = well_connected verts4 edges4
+in
+    result4
+end;
+
+let
+    val verts5 = ["A", "B", "C"];
+    val edges5 = [("A", "B"), ("B", "C"), ("C", "A"), ("A", "C")];
+    val result5 = well_connected verts5 edges5
+in
+    result5
+end;
+
+let
+    val verts6 = [#"A", #"B", #"C"];
+    val edges6 = [(#"A", #"B"), (#"B", #"C")];
+    val result6 = well_connected verts6 edges6
+in
+    result6
+end;
+
+let
+    val verts7 = ["A", "B", "C"];
+    val edges7 = [];
+    val result7 = well_connected verts7 edges7
+in
+    result7
+end;
+
+let
+    val verts8 = ["A", "B", "C"];
+    val edges8 = [("A", "B"), ("B", "C"), ("C", "A"), ("A", "C")];
+    val result8 = max_removable_edges verts8 edges8
+in
+    result8
+end;
+
+let
+    val verts9 = ["X", "Y", "Z"];
+    val edges9 = [("X", "Y"), ("Y", "Z"), ("Z", "X")];
+    val result9 = max_removable_edges verts9 edges9
+in
+    result9
+end;
+
+let
+    val verts10 = ["1", "2", "3", "4"];
+    val edges10 = [
+    ("1", "2"), ("2", "3"), ("3", "1"),  (* base cycle *)
+    ("1", "4"), ("4", "1"), ("2", "4"), ("4", "3")
+    ];
+    val result10 = max_removable_edges verts10 edges10
+in
+    result10
+end;
