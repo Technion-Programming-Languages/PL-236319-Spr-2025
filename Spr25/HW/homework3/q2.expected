@@ -1,0 +1,22 @@
+val it = () : unit
+val test1 = 1 ::: "a" ::: 2 ::: "b" ::: NIL : (int,string) heterolist
+val test2 = "hello" ::: 3.14 ::: "world" ::: 42 ::: NIL
+  : (string,real) heterolist
+val test3 = true ::: 1 ::: false ::: 2 ::: NIL : (bool,int) heterolist
+val test4 = #"a" ::: "hello" ::: #"b" ::: "world" ::: NIL
+  : (char,string) heterolist
+val test5 = ([1,2],["a","b"]) : int list * string list
+val test6 = (["x","y"],[1.1,2.2]) : string list * real list
+val test7 = ([#"a",#"b"],["hello","world"]) : char list * string list
+val test8 = ([true,false],[1,2]) : bool list * int list
+val testlol =
+  (["never","gonna","give","you","up"],["never","gonna","let","you","down"])
+  : string list * string list
+val test9 = 1 ::: "a" ::: 2 ::: "b" ::: NIL : (int,string) heterolist
+val test10 = "x" ::: 1.1 ::: "y" ::: 2.2 ::: NIL : (string,real) heterolist
+val test11 = #"a" ::: "hello" ::: #"b" ::: "world" ::: NIL
+  : (char,string) heterolist
+val test12 = true ::: 1 ::: false ::: 2 ::: NIL : (bool,int) heterolist
+val test13 = NIL : (int,string) heterolist
+val test14 = NIL : (string,real) heterolist
+- 
