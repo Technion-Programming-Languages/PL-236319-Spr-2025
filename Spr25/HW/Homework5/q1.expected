@@ -1,0 +1,15 @@
+val it = () : unit
+val seq_to_list = fn : 'a Seq -> 'a list
+val dseq_to_list = fn : 'a DSeq -> 'a list
+val part1_1 = true : bool
+val part1_2 = true : bool
+val part1_3 = false : bool
+val part1_4 = false : bool
+val part1_5 = false : bool
+val part2_1_list = [LASER_GUN,MARVIN] : tile list
+val part2_2_list = [LASER_GUN,DEEPTHOUGHT] : tile list
+val part3_1 = [[RIGHT]] : direction list list
+val part3_2 = [[DOWN,RIGHT],[RIGHT,DOWN]] : direction list list
+val part4_shortest_path_length1 = 2 : int
+val part4_shortest_path_length2 = ~2 : int
+- 

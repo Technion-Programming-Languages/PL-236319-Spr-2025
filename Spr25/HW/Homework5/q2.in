@@ -1,0 +1,18 @@
+use_module(library(yall)).
+print("===TEST START===").
+
+once(fib(X,7)).
+once(fib(12,8)).
+
+once(padovan(X,1)).
+once(padovan(X,7)).
+
+once(catalan(X,1)).
+once(catalan(X,7)).
+
+once(multisum(2,X,Y,Z)).
+once(multisum(8,X,Y,Z)).
+
+
+
+
