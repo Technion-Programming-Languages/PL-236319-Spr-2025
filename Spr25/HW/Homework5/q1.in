@@ -1,0 +1,61 @@
+print "===TEST START===\n";
+
+fun seq_to_list Nil = []
+  | seq_to_list (Cons(x, xs)) = x :: (seq_to_list (xs()));
+
+fun dseq_to_list DNil = []
+  | dseq_to_list (DCons(x, xs1, xs2)) = x :: (dseq_to_list (xs1()) @ dseq_to_list (xs2()));
+
+val part1_1 = good_path (Cons(LASER_GUN, fn() => Cons(MARVIN, fn() => Cons(DEEPTHOUGHT, fn()=>Nil))));
+val part1_2 = good_path (Cons(FOURTY_TWO,fn()=>Cons(MARVIN,fn()=>Cons(DEEPTHOUGHT,fn()=>Nil))));
+val part1_3 = good_path (Cons(MARVIN,fn()=>Cons(MARVIN,fn()=>Cons(DEEPTHOUGHT,fn()=>Nil))));
+val part1_4 = good_path (Cons(FOURTY_TWO,fn()=>Cons(MARVIN,fn()=>Cons(MARVIN,fn()=>Nil))));
+val part1_5 = good_path (Cons(FOURTY_TWO,fn()=>Cons(BLACKHOLE,fn()=>Cons(DEEPTHOUGHT,fn()=>Nil))));
+
+val part2_1_list = 
+    let
+        val part2_maze1 = DCons(LASER_GUN, fn () => DCons(MARVIN, fn () => DNil, fn () => DNil), fn () => DCons(DEEPTHOUGHT, fn () => DNil, fn () => DNil));
+        val part2_dir1 = Cons(DOWN, fn () => Cons(RIGHT, fn () => Nil));
+        val part2_1 =  get_flat_path part2_maze1 part2_dir1;
+    in
+        seq_to_list part2_1
+    end;
+
+val part2_2_list = 
+    let
+        val part2_maze2 = DCons(LASER_GUN, fn () => DCons(MARVIN, fn () => DNil, fn () => DNil), fn () => DCons(DEEPTHOUGHT, fn () => DNil, fn () => DNil));
+        val part2_dir2 = Cons(RIGHT, fn () => Cons(DOWN, fn () => Nil));
+        val part2_2 =  get_flat_path part2_maze2 part2_dir2;
+    in
+        seq_to_list part2_2
+    end;
+
+val part3_1 = 
+    let
+        val part3_maze1 = DCons(LASER_GUN, fn () => DCons(MARVIN, fn () => DNil, fn () => DNil), fn () => DCons(DEEPTHOUGHT, fn () => DNil, fn () => DNil));
+        val part3_paths1 = find_all_paths (0, 1);
+    in
+        map seq_to_list part3_paths1
+    end;
+
+val part3_2 = 
+    let
+        val part3_maze2 = DCons(LASER_GUN, fn () => DCons(MARVIN, fn () => DCons(BLACKHOLE, fn () => DNil, fn () => DNil), fn () => DNil), fn () => DCons(DEEPTHOUGHT, fn () => DCons(BLACKHOLE, fn () => DNil, fn () => DNil), fn () => DNil));
+        val part3_paths2 = find_all_paths (1, 1);
+    in
+        map seq_to_list part3_paths2
+    end;
+
+val part4_shortest_path_length1 =
+    let
+        val part4_maze1 = DCons(LASER_GUN, fn () => DCons(MARVIN, fn () => DNil, fn () => DNil), fn () => DCons(DEEPTHOUGHT, fn () => DNil, fn () => DNil));
+    in
+        minimal_distance_for_deep_thought part4_maze1
+    end;
+
+val part4_shortest_path_length2 =
+    let
+        val part4_maze1 = DCons(LASER_GUN, fn () => DCons(MARVIN, fn () => DNil, fn () => DNil), fn () => DCons(FOURTY_TWO, fn () => DNil, fn () => DNil));
+    in
+        (minimal_distance_for_deep_thought part4_maze1) handle NoDeepThought => ~2
+    end;
