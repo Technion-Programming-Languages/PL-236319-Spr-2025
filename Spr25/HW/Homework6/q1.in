@@ -1,0 +1,64 @@
+use_module(library(yall)).
+set_prolog_flag(answer_write_options, [quoted(true), portray(true), max_depth(0), spacing(next_argument)]).
+print("===TEST START===").
+
+vertex(1,[]).
+vertex(2,['never gonna','up']).
+edge(1,2).
+
+print("===PART ONE===").
+
+satisfy(2,atom('up')).
+
+
+satisfy(2,atom('give')).
+
+
+satisfy(5,not(atom('you'))).
+
+
+satisfy(3,not(atom('give'))).
+
+
+satisfy(6,and(atom('never gonna'),atom('give'))).
+
+
+satisfy(6,and(atom('you'),atom('give'))).
+
+
+satisfy(6,or(atom('you'),atom('give'))).
+
+
+satisfy(2,or(atom('you'),atom('give'))).
+
+print("===PART TWO===").
+
+satisfy(4,next(atom('give'))).
+
+satisfy(4,next(atom('never gonna'))).
+
+satisfy(4,next(or(atom('give'),atom('up')))).
+
+satisfy(4,next(and(atom('give'),atom('up')))).
+
+print("===PART THREE===").
+
+satisfy(3,eventually(atom('up'))).
+
+satisfy(1,eventually(and(atom('you'),atom('up')))).
+
+print("===PART FOUR===").
+
+satisfy(1,until(not(atom('up')),atom('up'))).
+
+satisfy(6,until(atom('never gonna'),atom('up'))).
+
+print("===PART FIVE===").
+
+satisfy(1,globally(or(not(atom('up')),atom('never gonna')))).
+
+satisfy(6,globally(atom('never gonna'))).
+
+
+
+
